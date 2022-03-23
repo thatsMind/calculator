@@ -32,3 +32,17 @@ function operate(num1, num2, operator){
             alert("wrong operator")
     }
 }
+
+const container = document.querySelector(".container")
+const displayValue = document.querySelector(".display")
+let total="";
+
+
+container.addEventListener("click", (e)=>{
+    const isButton = (e.target.nodeName==="BUTTON" && e.target.className == "number");
+    if(!isButton){
+        return;
+    }
+    total+=e.target.innerText;
+    displayValue.textContent=total;
+})
