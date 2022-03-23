@@ -1,5 +1,5 @@
 function add(num1, num2){
-    return num1 + num2;
+    return +num1 + num2;
 }
 
 function subtract(num1, num2){
@@ -17,17 +17,13 @@ function divide(num1, num2){
 function operate(num1, num2, operator){
     switch(operator){
         case "+":
-            add(num1, num2);
-            break;
+            return add(num1, num2);
         case "-":
-            subtract(num1, num2);
-            break;
+            return subtract(num1, num2);
         case "*":
-            multiply(num1, num2);
-            break;
+            return multiply(num1, num2);
         case "/":
-            divide(num1, num2);
-            break;
+            return divide(num1, num2);
         default:
             alert("wrong operator")
     }
@@ -35,14 +31,49 @@ function operate(num1, num2, operator){
 
 const container = document.querySelector(".container")
 const displayValue = document.querySelector(".display")
-let total="";
+let visualInput="";
+let tempVisual="";
+let num1="";
+let num2="";
+let operator="";
 
 
 container.addEventListener("click", (e)=>{
-    const isButton = (e.target.nodeName==="BUTTON" && e.target.className == "number");
+    const isButton = e.target.className == "number";
     if(!isButton){
         return;
     }
-    total+=e.target.innerText;
-    displayValue.textContent=total;
+    visualInput+=e.target.innerText;
+    displayValue.textContent=visualInput;
+})
+
+container.addEventListener("click", (e)=>{
+    const isButton = e.target.className == "operator";
+    if(!isButton){
+        return;
+    }
+    num1=visualInput;
+    operator=e.target.innerText;
+    tempVisual=visualInput;
+    visualInput="";
+    displayValue.textContent=tempVisual;
+})
+
+container.addEventListener("click", (e)=>{
+    const isButton = e.target.className == "operate";
+    if(!isButton){
+        return;
+    }
+    num2=visualInput;
+    visualInput=operate(num1,num2,operator);
+    displayValue.textContent=visualInput;
+})
+
+container.addEventListener("click", (e)=>{
+    const isButton = e.target.className == "clear";
+    if(!isButton){
+        return;
+    }
+    visualInput="";
+    displayValue.textContent=visualInput;
 })
