@@ -1,5 +1,5 @@
 *{
-    /*border: 1px solid red;*/
+    /*border: 2px solid red;*/
     text-align: center;
     font-family: 'Courier New';
     font-size: large;
@@ -17,40 +17,79 @@ html{
 }
 
 .container{
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     padding:10px;
     background-color:rgb(196, 220, 255);
     display:flex;
     flex-direction:column;
+    gap:5px;
 
 }
 
 .row{
     display:flex;
-    gap:2px;
+    gap:5px;
 
 }
 
+.clear, .delete{
+    display:flex;
+    flex-grow:1;
+}
+
+.clear{
+    background-color:rgb(247, 197, 197);
+}
+.delete{
+    background-color: blanchedalmond;
+}
+
 .display{
-    border:1px solid black;
+    border:2px solid black;
     border-radius: 5px;
 
-    font-size:40px;
-    height:40px;
+    height:80px;
     display:flex;
-    flex-direction:row-reverse;
+    flex-direction:column;
+    justify-content: space-around;
+    width:100%;
+    min-width:2px;
     margin-top:20px;
     margin-bottom:20px;
     
     background-color:lightgrey;
 }
 
+.history, .visual{
+    margin-right:10px;
+}
+
+.history{
+    display:flex;
+    flex-flow:row-reverse wrap;
+    align-items:flex-end;
+    min-height:20px;
+}
+
+.visual{
+    font-size:40px;
+
+    display:flex;
+    flex-flow:row-reverse wrap;
+    align-items:flex-start;
+
+}
+
 button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 2px solid black;
     min-width:80px;
     height:60px;
+    
 }
 
 button:active{
